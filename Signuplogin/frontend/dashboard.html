@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Enter two numbers here click on find</h1>
+   <input type="number" placeholder="Enter first number" id="first"/>
+   <input type="number" placeholder="Enter second number" id="second"/>
+   <button onclick="findfibo()">Find</button>
+
+   <h1 id="hyper"></h1>
+</body>
+</html>
+<script>
+ 
+
+function findfibo(){
+    let n1=document.getElementById("first").value;
+ let n2=document.getElementById("second").value;
+ var i;
+ var fib = [+n1 , +n2];
+ let bag=""
+ for ( i = 2; i <= 10; i++) {
+  // Next fibonacci number = previous + one before previous
+  // Translated to JavaScript:
+  fib[i] = fib[i - 2] + fib[i - 1];
+  
+  bag+=fib[i]+"    "
+    
+  
+}
+console.log(bag)
+ const abcd=document.getElementById("hyper")
+abcd.innerHTML="fibonacci of given two numbers : "+bag
+}
+</script>

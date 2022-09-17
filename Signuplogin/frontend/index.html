@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+   <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="some">
+         <form id="mform">
+      
+        <input type="text" placeholder="enter your email id" id="email"  />
+        
+        <input type="text" placeholder="enter your password" id="password"  />
+        <input type="submit" id="button">
+    </form>
+    <div class="register">
+        <h3>If you are not registered <a href="signup.html">click here</a></h3>
+    </div>
+    </div>
+   
+</body>
+</html>
+<script>
+
+const myform=document.getElementById("mform")
+
+myform.addEventListener("submit", async (event)=>{
+   event.preventDefault();
+   try{
+    const email=document.getElementById("email").value;
+   const password=document.getElementById("password").value;
+    const data={
+        email,
+        password
+    }
+   const res= await fetch('http://localhost:4000/login',{
+    method:'post',
+    headers: {
+    'Content-Type': 'application/json'
+    },
+    body:JSON.stringify(data)
+   })
+     await res.json();
+    //   const head1=document.createElement("h1")
+    //   head1.innerText="Welcome login Success"
+    //   document.querySelector("body").append(head1)
+    alert("Welcome to dashboard")
+    dashboard()
+   }catch(err){
+      console.log("error",err);
+      alert("Wrong email or password");
+   }
+})
+
+function dashboard(){
+    document.location.href="dashboard.html"
+}
+
+// .then(function(res){
+//     return res.text();
+//    }).then(function(text){
+//     console.log(body)
+//    }).catch(function(err){
+//     console.log(err)
+//    })
+// async function mydata(){
+//     const res= await fetch("http://localhost:4000/see");
+
+//     const data= await res.json()
+//     console.log(data)
+// }
+// mydata()
+
+// i have used only try cvatch block only extra 
+
+</script>

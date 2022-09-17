@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="some1">
+    <form id="form">
+        <input type="text" placeholder="enter your name" id="name" />
+        <input type="text" placeholder="enter your email id" id="email"  />
+        <input type="text" placeholder="enter your number" id="number"  />
+        <input type="text" placeholder="enter your password" id="password"  />
+        <input type="submit" id="button"/>
+    </form>
+  </div>
+</body>
+</html>
+<script>
+    const myform=document.getElementById("form")
+
+myform.addEventListener("submit", async (event)=>{
+   event.preventDefault();
+  try{
+    const Name=document.getElementById("name").value;
+   const Email=document.getElementById("email").value;
+   const Number=document.getElementById("number").value;
+   const Password=document.getElementById("password").value;
+  //console.log(Name,Email,Number,Password)
+  const data={
+       name:Name,
+        email:Email,
+        number:Number,
+        password:Password
+    }
+  const res = await fetch('http://localhost:4000/create',{
+    method:'post',
+    headers: {
+    'Content-Type': 'application/json'
+    },
+    body:JSON.stringify(data)
+   })
+   await res.json()
+   console.log("you are registered")
+   alert("You have successfully registred")
+   again();
+  }catch(err){
+    alert("Please fill all boxes")
+  }
+})
+
+function again(){
+    document.location.href="index.html"
+}
+
+// .then((response) => response.json())
+//   .then((data) => {
+//     console.log('Success:', data);
+//   })
+//   .catch((error) => {
+//     console.error('Error:');
+//   });
+</script>
